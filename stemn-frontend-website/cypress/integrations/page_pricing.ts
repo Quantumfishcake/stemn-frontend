@@ -1,11 +1,11 @@
 import { elByDataTag } from '../utils'
 
-export default ({ url }) => {
+export default ({ url }: { url: string }) => {
   describe('Pricing Page', () => {
     it('Should have plan names', () => {
       cy.visit(`${url}/pricing`)
       cy.get(elByDataTag('pricingColumn')).then((pricingColumns) => {
-        const wraps = (x) => { return cy.wrap(pricingColumns[x]) }
+        const wraps = (x: number) => cy.wrap(pricingColumns[x])
         wraps(0).contains('Open-source')
         wraps(0).contains('FREE')
         wraps(1).contains('Solo')
